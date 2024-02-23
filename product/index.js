@@ -1,12 +1,15 @@
 
 function viewFunc() {
-    document.querySelector("div.form_container").style.display = "block";
+    document.querySelector(".form_container").classList.add("active");
     document.querySelector("div.card-cont").style.display="none";
-    document.querySelector("div.heading").style.display="none";
+    document.querySelector("div.blur").style.display = "block";
+    
+    
 }
 function closeFunc() {
-    document.querySelector("div.form_container").style.display = "none";
+    document.querySelector("div.form_container").classList.add("close");
     document.querySelector("div.card-cont").style.display="block";
+    document.querySelector("div.blur").style.display = "none";
 }
 const val = document.getElementById("val");
 
@@ -30,58 +33,56 @@ val.addEventListener("click", (e) => {
             small1.innerHTML="";
         })
     }
-    else{
-       
-        if (price.value == "") {
-            price.style.border = "2px solid red";
-            small2.innerHTML="please enter a price";
-            small2.style.color="red";
-            price.focus()
-            
-            addEventListener("input",()=>{
-                if(price.value<=0){
-                    price.style.border = "2px solid red";
-                small2.innerHTML="please enter a valid price";
-                small2.style.color="red";
+    else if (price.value == ""){   
+        price.style.border = "2px solid red";
+        small2.innerHTML = "please enter a price";
+        small2.style.color = "red";
+        price.focus()
+
+        addEventListener("input", () => {
+            if (price.value <= 0) {
+                price.style.border = "2px solid red";
+                small2.innerHTML = "please enter a valid price";
+                small2.style.color = "red";
                 price.focus()
-                }
-                price.style.border = "2px solid green";
-                small2.innerHTML="";
-            })
-        }
-        else{
-           
-            if (desc.value == "") {
-                desc.style.border = "2px solid red";
-                small3.innerHTML="please enter the desc";
-                small3.style.color="red";
-                desc.focus()
-                addEventListener("input",()=>{
-                    desc.style.border = "2px solid green";
-                    small3.innerHTML="";
-                })
             }
-            else{
-                const productObj = {
-                    product: product.value,
-                    price: price.value,
-                    description: desc.value
-                };
-            
-                let products = JSON.parse(localStorage.getItem("products")) || [];
-                products.push(productObj);
-                localStorage.setItem("products", JSON.stringify(products));
-            
-                // product.value = "";
-                // price.value = "";
-                // desc.value = "";
-                let pform=document.getElementById("p-form");
-                pform.reset();
-                document.querySelector("div.form_container").style.display = "none";
-                document.querySelector("div.card-cont").style.display="block";
-               
-            
-                viewProducts();
+            price.style.border = "2px solid green";
+            small2.innerHTML = "";
+        })
+    }
+    else if(desc.value == ""){
+    
+        desc.style.border = "2px solid red";
+        small3.innerHTML = "please enter the desc";
+        small3.style.color = "red";
+        desc.focus()
+        addEventListener("input", () => {
+            desc.style.border = "2px solid green";
+            small3.innerHTML = "";
+        })
+    }
+    else{
+        const productObj = {
+            product: product.value,
+            price: price.value,
+            description: desc.value
+        };
+
+        let products = JSON.parse(localStorage.getItem("products")) || [];
+        products.push(productObj);
+        localStorage.setItem("products", JSON.stringify(products));
+
+        // product.value = "";
+        // price.value = "";
+        // desc.value = "";
+        let pform = document.getElementById("p-form");
+        pform.reset();
+        document.querySelector("div.blur").style.display = "none";
+        document.querySelector("div.form_container").style.display = "none";
+        document.querySelector("div.card-cont").style.display = "block";
+        
+        // document.querySelector("div.heading").style.display="none";
+         viewProducts();
 
                
                 // let ls = localStorage.getItem("product");
@@ -139,9 +140,8 @@ val.addEventListener("click", (e) => {
                 // else{
                 //     localStorage.setItem("db",[])
                 // }
-
-            }
-        }
+            
+        
     }
 });
 
