@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+          
+            background-color: rgb(245 225 196);
+            font-family: "Poppins", sans-serif;
+
+        }
+
+        .container {
+            width: 100%;
+
+
+        }
+
+        .row {
+            margin: 15px;
+        }
+
+        .col {
+            margin: auto;
+        }
+
+        .form_container {
+            display: none;
+            border: 1px solid rgba(160, 159, 159, 0.349);
+            background-color: rgb(121 122 133);
+            box-shadow: 0 0 5px 3px rgb(150, 99, 99);
+            border-radius: 20px;
+            width: 50%;
+            margin: auto;
+            margin-top: 50px;
+            padding: 5px;
+        }
+        .heading{
+            text-align: center;
+        }
+       
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 5px 10px;
+        }
+
+        .btn1 {
+            margin: auto;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .btn1 button {
+            color: white;
+            background-color: rgb(0, 26, 255);
+            border: none;
+            border-radius: 10px;
+            padding:10px 5px;
+            outline: none;
+        }
+
+        hr {
+            border: 1px solid rgb(221, 221, 221);
+        }
+
+        .card {
+            text-align: center;
+            width: 250px;
+            height: auto;
+            margin: auto;
+            background-color: rgb(127, 143, 143);
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 0 5px 3px rgb(150, 99, 99);
+            /* align-items: center; */
+            margin-top: 30px;
+        }
+
+        .inline-style {
+            background-color: beige;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .inline-style button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: none;
+            border-radius: 30px;
+            background-color: transparent;
+        }
+
+        .card h2,
+        h4 {
+            color: rgb(8, 8, 145);
+        }
+
+        .card-cont {
+            width: 100%;
+            margin-top: 50px;
+           
+        }
+        *:focus
+        {
+            outline: none;
+        }
+        
+        .header{
+            border-bottom: solid rgb(21, 21, 105);
+        }
+        
+        @media(max-width:768px) {
+            .row {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="container"> -->
+   <div class="btn1"><button onclick="viewFunc()" id="btn">Add New Product</button></div>
+    <hr class="header" >
+    <div class="form_container">
+        <form action="" id="p-form">
+            <div class="form-group row ">
+                <div class="col"> <label for="product" class="form-label ">Product name:</label></div>
+                <div class="col"><input id="product" class="form-control " type="text">
+                    <small class="row" id="product-s"></small>
+                </div>
+
+
+            </div>
+            <div class="form-group row">
+                <div class="col"><label for="price" class="form-label ">Price:</label></div>
+                <div class="col"> <input id="price" class="form-control " type="number">
+                    <small id="price-s"></small>
+                </div>
+
+
+            </div>
+            <div class="form-group row">
+                <div class="col"> <label for="desc" class="form-label ">Description:</label></div>
+                <div class="col"> <textarea class="form-control " name="" id="desc" cols="50" rows="5"></textarea>
+                    <small id="desc-s"></small>
+                </div>
+
+            </div>
+            <div class="buttons ">
+                <button id="val" class="btn btn-primary">Add</button>
+                <button onsubmit="closeFunc()" class="btn btn-danger">close</button>
+
+
+            </div>
+        </form>
+
+
+    </div>
+   <div class="heading"> <h1>My Products</h1></div>
+    <div class="card-cont" id="cart">
+       
+        <!-- <div class="card">
+            <div class="inline-style">
+                <div>
+                    <h2 class="product">product</h2>
+                    <h3 class="productValue"> Bat </h3>
+                </div>
+                <hr>
+                <div>
+                    <h2 class="price">price</h2>
+                    <h3 class="priceValue">1200</h3>
+                </div>
+                <hr>
+               <div> <h4 class="desc">Description</h4>
+                <h5 class="descValue">very good </h5></div>
+                <button >&#10060;</button>
+    
+            </div>
+        </div> -->
+    </div>
+    <!-- </div> -->
+
+
+
+    <script src="index.js">
+        // const card = document.createElement("div");
+        // card.classList.add("card");
+
+        // const inlineStyle = document.createElement("div");
+        // inlineStyle.classList.add("inline-style");
+
+        // const productDiv = document.createElement("div");
+        // const productName = document.createElement("h2");
+        // productName.classList.add("product");
+        // productName.textContent = "Product";
+        // const productValue = document.createElement("h3");
+        // productValue.classList.add("productValue");
+        // productValue.textContent = product.product;
+        // productDiv.appendChild(productName);
+        // productDiv.appendChild(productValue);
+
+        // const priceDiv = document.createElement("div");
+        // const priceName = document.createElement("h2");
+        // priceName.classList.add("price");
+        // priceName.textContent = "Price";
+        // const priceValue = document.createElement("h3");
+        // priceValue.classList.add("priceValue");
+        // priceValue.textContent = product.price;
+        // priceDiv.appendChild(priceName);
+        // priceDiv.appendChild(priceValue);
+
+        // const descDiv = document.createElement("div");
+        // const descName = document.createElement("h4");
+        // descName.classList.add("desc");
+        // descName.textContent = "Description";
+        // const descValue = document.createElement("h5");
+        // descValue.classList.add("descValue");
+        // descValue.textContent = product.description;
+        // descDiv.appendChild(descName);
+        // descDiv.appendChild(descValue);
+
+        // const deleteBtn = document.createElement("button");
+        // deleteBtn.innerHTML = "&#10060;";
+        // deleteBtn.onclick = () => {
+        //     deleteProduct(index);
+        // };
+
+        // inlineStyle.appendChild(productDiv);
+        // inlineStyle.appendChild(document.createElement("hr"));
+        // inlineStyle.appendChild(priceDiv);
+        // inlineStyle.appendChild(document.createElement("hr"));
+        // inlineStyle.appendChild(descDiv);
+        // inlineStyle.appendChild(deleteBtn);
+
+        // card.appendChild(inlineStyle);
+        // cart.appendChild(card);
+   </script> 
+
+
+</body>
+
+</html>
